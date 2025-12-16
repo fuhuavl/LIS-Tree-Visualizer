@@ -1,6 +1,9 @@
 # LIS Tree Visualizer  
 **Largest (Longest) Increasing Subsequence Visualization**
 
+
+![Animasi LIS Tree](images/ui.gif)
+
 <img width="877" height="651" alt="image" src="https://github.com/user-attachments/assets/6970ab60-26a3-4f4b-b570-d2510c68cb20" />
 
 ## Judul
@@ -141,10 +144,6 @@ Buka Git Bash
 python lis_visualizer.py
 ```
 
-## Visualisasi Aplikasi
 
-## Animasi Proses Algoritma LIS
-
-![Animasi LIS Tree](images/ui.gif)
 
 
