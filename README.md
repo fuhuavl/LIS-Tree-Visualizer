@@ -24,7 +24,6 @@ Program ini dibuat untuk:
 - Memvisualisasikan proses pembentukan Longest Increasing Subsequence
 - Menunjukkan perbedaan antara struktur DAG dan tree murni
 - Memverifikasi pemenuhan Teorema 2-1 pada struktur tree
-- Menyediakan antarmuka GUI agar proses dapat diamati secara visual
 
 ---
 
@@ -51,6 +50,48 @@ Jika tidak ada elemen sebelumnya yang lebih kecil, maka:
 
 LIS(i) = 1
 
+```bash
+def build_pure_tree(arr):
+    n = len(arr)
+    dp = [1] * n
+    parent = [-1] * n
+
+    for i in range(n):
+        for j in range(i):
+            if arr[j] < arr[i] and dp[j] + 1 > dp[i]:
+                dp[i] = dp[j] + 1
+                parent[i] = j
+```
+
+dp[i] = panjang LIS yang berakhir di indeks i
+
+```bash
+dp[i] = max(dp[j] + 1) untuk semua j < i dan arr[j] < arr[i]
+```
+
+Rekonstruksi Jalur LIS (Tree Murni)
+
+```bash
+for i in range(n):
+    if parent[i] != -1:
+        tree[parent[i]].append(i)
+    else:
+        roots.append(i)
+```
+
+Perhitungan Panjang LIS dari Struktur Tree
+
+```bash
+# calculate_max_lis_length(arr, tree)
+
+def calculate_max_lis_length(arr, tree):
+    memo = {}
+    def dp(idx):
+        best = 1
+        for child in tree[idx]:
+            best = max(best, 1 + dp(child))
+        return best
+```
 
 Kompleksitas waktu:
 - O(n²)
@@ -93,9 +134,17 @@ Mode *Pure Tree* pada program ini memenuhi seluruh kondisi tersebut.
 ---
 
 ## Cara Menjalankan Program
+
+Buka Git Bash
+
 ```bash
 python lis_visualizer.py
+```
 
+## Visualisasi Aplikasi
 
+## Animasi Proses Algoritma LIS
+
+![Animasi LIS Tree](images/ui.gif)
 
 
